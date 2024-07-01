@@ -1,0 +1,366 @@
+@use "sass:math";
+@use "variables" as v;
+
+@mixin generate-padding-values($prefix, $property, $deviceLabel: "") {
+  $values: (
+    "0": 0,
+    "2": 0.125rem,
+    "4": 0.25rem,
+    "8": 0.5rem,
+    "12": 0.75rem,
+    "16": 1rem,
+    "18": 1.125rem,
+    "20": 1.25rem,
+    "24": 1.5rem,
+    "32": 2rem,
+    "40": 2.5rem,
+    "48": 3rem,
+    "56": 3.5rem,
+    "64": 4rem,
+    "72": 4.5rem,
+    "80": 5rem,
+    "88": 5.5rem,
+    "96": 6rem,
+    "104": 6.5rem,
+    "112": 7rem,
+    "120": 7.5rem,
+  );
+
+  @each $k, $v in $values {
+    [class*="#{$deviceLabel}#{$prefix}#{$k}"] {
+      #{$property}: $v;
+    }
+  }
+}
+
+$spacing: (
+  "padding": (
+    "prefix": "p",
+    "property": "padding",
+  ),
+  "padding-top": (
+    "prefix": "pt",
+    "property": "padding-top",
+  ),
+  "padding-right": (
+    "prefix": "pr",
+    "property": "padding-right",
+  ),
+  "padding-bottom": (
+    "prefix": "pb",
+    "property": "padding-bottom",
+  ),
+  "padding-left": (
+    "prefix": "pl",
+    "property": "padding-left",
+  ),
+  "padding-inline": (
+    "prefix": "ph",
+    "property": "padding-inline",
+  ),
+  "padding-block": (
+    "prefix": "pv",
+    "property": "padding-block",
+  ),
+);
+
+@each $property, $map in $spacing {
+  $prefix: map-get($map, "prefix");
+  $property: map-get($map, "property");
+
+  @include generate-padding-values($prefix, $property, "xs_");
+
+  @media (min-width: #{map-get(v.$breakpoints, "m")}) {
+    @include generate-padding-values($prefix, $property, "sm_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "ml")}) {
+    @include generate-padding-values($prefix, $property, "md_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "t")}) {
+    @include generate-padding-values($prefix, $property, "lg_");
+  }
+}
+
+// Gaps
+
+// define mixin to generate gap values
+@mixin generate-gap-values($property, $prefix, $deviceLabel: "") {
+  $values: (
+    "0": 0,
+    "2": 0.125rem,
+    "4": 0.25rem,
+    "8": 0.5rem,
+    "12": 0.75rem,
+    "16": 1rem,
+    "18": 1.125rem,
+    "20": 1.25rem,
+    "24": 1.5rem,
+    "32": 2rem,
+    "40": 2.5rem,
+    "48": 3rem,
+    "56": 3.5rem,
+    "64": 4rem,
+    "72": 4.5rem,
+    "80": 5rem,
+    "88": 5.5rem,
+    "96": 6rem,
+    "104": 6.5rem,
+    "112": 7rem,
+    "120": 7.5rem,
+  );
+
+  @each $k, $v in $values {
+    [class*="#{$deviceLabel}#{$prefix}#{$k}"] {
+      #{$property}: $v;
+      display: flex;
+      @if $prefix == "v" {
+        flex-direction: column;
+      }
+      @if $prefix == "h" {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+// define gap values
+$gap-values: (
+  "grid-column-gap": (
+    "prefix": "h",
+  ),
+  "grid-row-gap": (
+    "prefix": "v",
+  ),
+);
+
+// generate utility classes for gap values
+@each $property, $map in $gap-values {
+  $prefix: map-get($map, "prefix");
+  @include generate-gap-values($property, $prefix, "xs_");
+
+  @media (min-width: #{map-get(v.$breakpoints, "m")}) {
+    @include generate-gap-values($property, $prefix, "sm_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "ml")}) {
+    @include generate-gap-values($property, $prefix, "md_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "t")}) {
+    @include generate-gap-values($property, $prefix, "lg_");
+  }
+}
+
+@mixin generate-padding-values($prefix, $property, $deviceLabel: "") {
+  $values: (
+    "0": 0,
+    "2": 0.125rem,
+    "4": 0.25rem,
+    "8": 0.5rem,
+    "12": 0.75rem,
+    "16": 1rem,
+    "18": 1.125rem,
+    "20": 1.25rem,
+    "24": 1.5rem,
+    "32": 2rem,
+    "40": 2.5rem,
+    "48": 3rem,
+    "56": 3.5rem,
+    "64": 4rem,
+    "72": 4.5rem,
+    "80": 5rem,
+    "88": 5.5rem,
+    "96": 6rem,
+    "104": 6.5rem,
+    "112": 7rem,
+    "120": 7.5rem,
+  );
+
+  @each $k, $v in $values {
+    [class*="#{$deviceLabel}#{$prefix}#{$k}"] {
+      #{$property}: $v;
+    }
+  }
+}
+
+$spacing: (
+  "padding": (
+    "prefix": "m",
+    "property": "margin",
+  ),
+  "padding-top": (
+    "prefix": "mt",
+    "property": "margin-top",
+  ),
+  "padding-right": (
+    "prefix": "mr",
+    "property": "margin-right",
+  ),
+  "padding-bottom": (
+    "prefix": "mb",
+    "property": "margin-bottom",
+  ),
+  "padding-left": (
+    "prefix": "ml",
+    "property": "margin-left",
+  ),
+  "padding-inline": (
+    "prefix": "mh",
+    "property": "margin-inline",
+  ),
+  "padding-block": (
+    "prefix": "mv",
+    "property": "margin-block",
+  ),
+);
+
+@each $property, $map in $spacing {
+  $prefix: map-get($map, "prefix");
+  $property: map-get($map, "property");
+
+  @include generate-padding-values($prefix, $property, "xs_");
+
+  @media (min-width: #{map-get(v.$breakpoints, "m")}) {
+    @include generate-padding-values($prefix, $property, "sm_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "ml")}) {
+    @include generate-padding-values($prefix, $property, "md_");
+  }
+
+  @media (min-width: #{map-get(v.$breakpoints, "t")}) {
+    @include generate-padding-values($prefix, $property, "lg_");
+  }
+}
+
+$boder-radius: (
+  "border-radius": (
+    "prefix": "br",
+    "values": (
+      "0": 0,
+      "2": 0.125rem,
+      "4": 0.25rem,
+      "8": 0.5rem,
+      "12": 0.75rem,
+      "16": 1rem,
+      "18": 1.125rem,
+      "20": 1.25rem,
+      "24": 1.5rem,
+      "32": 2rem,
+      "40": 2.5rem,
+    ),
+  ),
+);
+
+@each $property, $map in $boder-radius {
+  $prefix: map-get($map, "prefix");
+  $values: map-get($map, "values");
+
+  @each $k, $v in $values {
+    [class*="xs_#{$prefix}#{$k}"] {
+      #{$property}: $v;
+    }
+  }
+}
+
+@media (min-width: map-get(v.$breakpoints, "m")) {
+  @each $property, $map in $boder-radius {
+    $prefix: map-get($map, "prefix");
+    $values: map-get($map, "values");
+
+    @each $k, $v in $values {
+      [class*="sm_#{$prefix}#{$k}"] {
+        #{$property}: $v;
+      }
+    }
+  }
+}
+
+@media (min-width: map-get(v.$breakpoints, "ml")) {
+  @each $property, $map in $boder-radius {
+    $prefix: map-get($map, "prefix");
+    $values: map-get($map, "values");
+
+    @each $k, $v in $values {
+      [class*="md_#{$prefix}#{$k}"] {
+        #{$property}: $v;
+      }
+    }
+  }
+}
+
+@media (min-width: map-get(v.$breakpoints, "t")) {
+  @each $property, $map in $boder-radius {
+    $prefix: map-get($map, "prefix");
+    $values: map-get($map, "values");
+
+    @each $k, $v in $values {
+      [class*="lg_#{$prefix}#{$k}"] {
+        #{$property}: $v;
+      }
+    }
+  }
+}
+
+@mixin generate-classes($map) {
+  @each $property, $config in $map {
+    $prefix: map-get($config, "prefix");
+    $values: map-get($config, "values");
+
+    @each $k, $v in $values {
+      .#{$prefix}-#{$k} {
+        #{$property}: $v;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .#{$prefix}-#{$k}-#{$k} {
+        #{$property}: $v;
+        width: $v;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+$icons: (
+  "height": (
+    "prefix": "ico",
+    "values": (
+      "12": 0.75rem,
+      "16": 1rem,
+      "20": 1.25rem,
+      "24": 1.5rem,
+      "32": 2rem,
+      "40": 2.5rem,
+      "48": 3rem,
+      "56": 3.5rem,
+      "64": 4rem,
+      "72": 4.5rem,
+      "80": 5rem,
+    ),
+  ),
+);
+
+$icons-rel: (
+  "height": (
+    "prefix": "ico",
+    "values": (
+      "xs": 0.5em,
+      "s": 0.75em,
+      "m": 1em,
+      "l": 1.25em,
+      "xl": 1.5em,
+    ),
+  ),
+);
+
+@include generate-classes($icons);
+@include generate-classes($icons-rel);

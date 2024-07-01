@@ -1,0 +1,25 @@
+@use "variables" as v;
+
+@each $key, $val in v.$colors {
+  [class*="bg#{$key}"] {
+    background: $val;
+  }
+  [class*="bc#{$key}"] {
+    border-color: $val;
+  }
+  [class*="oc#{$key}"] {
+    outline-color: $val;
+  }
+  [class*="fc#{$key}"] {
+    color: $val;
+  }
+  [class*="sc#{$key}"] {
+    -webkit-text-stroke-color: $val;
+  }
+}
+
+@each $key, $val in v.$specials {
+  [class*="bg#{$key}"] {
+    background: $val;
+  }
+}

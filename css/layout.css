@@ -5,7 +5,7 @@
   --grid-margin: var(--grid--margin);
 }
 
-[class*=cnt] {
+.cnt {
   width: 100%;
   max-width: var(--grid--container);
   margin-right: auto;
@@ -13,12 +13,9 @@
   padding-inline: var(--grid--margin);
 }
 
-[class*=rw] {
+.cnt:has([class*=clm]) {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% - 2 * var(--grid--margin));
-  margin-right: calc(-1 * var(--clm-gutter));
-  margin-left: calc(-1 * var(--clm-gutter));
   grid-row-gap: var(--grid-gap);
 }
 
@@ -30,12 +27,12 @@
   max-width: 100%;
 }
 
-[class*=rw-x] > [class*=clm] {
-  padding-right: var(--clm-gutter);
-  padding-left: var(--clm-gutter);
-  flex-basis: auto;
-  flex-grow: 1;
-  max-width: 100%;
+.cnt > [class*=clm]:first-of-type {
+  padding-left: 0;
+}
+
+.cnt > [class*=clm]:last-of-type {
+  padding-right: 0;
 }
 
 [class*=clm][class*=xs_1] {

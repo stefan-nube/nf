@@ -1,37 +1,40 @@
 @use "variables" as v;
 
 :root {
-  --grid-gutter: var(--grid--base-gutter);
-  --grid-gap: var(--grid--base-row-gap);
-  --grid-main-width: 90rem;
+  --container: var(--grid--container);
+  --clm-gutter: var(--grid--clm-gutter);
+  --grid-gap: var(--grid--row-gap);
+  --grid-margin: var(--grid--margin);
 }
 
 [class*="cnt"] {
-  width: 90%;
-  max-width: 90rem;
+  width: 100%;
+  max-width: var(--grid--container);
   margin-right: auto;
   margin-left: auto;
+  padding-inline: var(--grid--margin);
 }
 
 [class*="rw"] {
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(-1 * var(--grid-gutter));
-  margin-left: calc(-1 * var(--grid-gutter));
+  width: calc(100% - 2 * var(--grid--margin));
+  margin-right: calc(-1 * var(--clm-gutter));
+  margin-left: calc(-1 * var(--clm-gutter));
   grid-row-gap: var(--grid-gap);
 }
 
 [class*="clm"] {
-  padding-right: var(--grid-gutter);
-  padding-left: var(--grid-gutter);
+  padding-right: var(--clm-gutter);
+  padding-left: var(--clm-gutter);
   flex-basis: 100%;
   flex-grow: 1;
   max-width: 100%;
 }
 
 [class*="rw-x"] > [class*="clm"] {
-  padding-right: var(--grid-gutter);
-  padding-left: var(--grid-gutter);
+  padding-right: var(--clm-gutter);
+  padding-left: var(--clm-gutter);
   flex-basis: auto;
   flex-grow: 1;
   max-width: 100%;
@@ -146,7 +149,7 @@ $v-values: (
 );
 
 $grid-gutter: (
-  "--grid-gutter": "hg",
+  "--clm-gutter": "hg",
 );
 
 $row-gap: (
@@ -169,18 +172,18 @@ $row-gap: (
 $columns-max: (
   "flex-basis": (
     "values": (
-      "1": calc(var(--grid-main-width) * 0.0833),
-      "2": calc(var(--grid-main-width) * 0.1666),
-      "3": calc(var(--grid-main-width) * 0.25),
-      "4": calc(var(--grid-main-width) * 0.3333),
-      "5": calc(var(--grid-main-width) * 0.4166),
-      "6": calc(var(--grid-main-width) * 0.5),
-      "7": calc(var(--grid-main-width) * 0.5833),
-      "8": calc(var(--grid-main-width) * 0.6666),
-      "9": calc(var(--grid-main-width) * 0.75),
-      "10": calc(var(--grid-main-width) * 0.8333),
-      "11": calc(var(--grid-main-width) * 0.9166),
-      "12": calc(var(--grid-main-width) * 1),
+      "1": calc(var(--container) * 0.0833),
+      "2": calc(var(--container) * 0.1666),
+      "3": calc(var(--container) * 0.25),
+      "4": calc(var(--container) * 0.3333),
+      "5": calc(var(--container) * 0.4166),
+      "6": calc(var(--container) * 0.5),
+      "7": calc(var(--container) * 0.5833),
+      "8": calc(var(--container) * 0.6666),
+      "9": calc(var(--container) * 0.75),
+      "10": calc(var(--container) * 0.8333),
+      "11": calc(var(--container) * 0.9166),
+      "12": calc(var(--container) * 1),
     ),
   ),
 );

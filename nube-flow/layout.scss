@@ -10,8 +10,8 @@
 .cnt {
   width: 100%;
   max-width: var(--grid--container);
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: calc(-1 * var(--clm-gutter));
+  margin-left: calc(-1 * var(--clm-gutter));
   padding-inline: var(--grid--margin);
 }
 
@@ -27,6 +27,12 @@
   display: flex;
   flex-wrap: wrap;
   grid-row-gap: var(--grid-gap);
+}
+
+section:has(.cnt) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 [class*="clm"] {

@@ -12,7 +12,6 @@
   max-width: var(--grid--container);
   margin-right: calc(-1 * var(--clm-gutter));
   margin-left: calc(-1 * var(--clm-gutter));
-  padding-inline: var(--grid--margin);
 }
 
 // [class*="rw"] {
@@ -33,6 +32,7 @@ section:has(.cnt) {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-inline: calc(var(--grid--margin) + var(--grid--gutter));
 }
 
 [class*="clm"] {

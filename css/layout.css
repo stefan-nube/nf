@@ -14,7 +14,7 @@
 .cnt:has([class*=clm]) {
   display: flex;
   flex-wrap: wrap;
-  grid-row-gap: var(--grid-gap);
+  grid-row-gap: var(--grid--row-gap);
   padding-inline: 0;
 }
 

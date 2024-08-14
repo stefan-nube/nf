@@ -8,21 +8,21 @@
 .cnt {
   width: 100%;
   max-width: var(--grid--container);
-  margin-right: calc(-1 * var(--clm-gutter));
-  margin-left: calc(-1 * var(--clm-gutter));
+  padding-inline: var(--clm-gutter);
 }
 
 .cnt:has([class*=clm]) {
   display: flex;
   flex-wrap: wrap;
   grid-row-gap: var(--grid-gap);
+  padding-inline: 0;
 }
 
 section:has(.cnt) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-inline: calc(var(--grid--margin) + var(--grid--gutter));
+  padding-inline: calc(var(--grid--margin) - var(--grid--clm-gutter));
 }
 
 [class*=clm] {

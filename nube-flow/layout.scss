@@ -36,8 +36,8 @@ section:has(.cnt) {
 }
 
 [class*="clm"] {
-  // padding-right: var(--clm-gutter);
-  // padding-left: var(--clm-gutter);
+  padding-right: var(--clm-gutter);
+  padding-left: var(--clm-gutter);
   flex-basis: 100%;
   flex-grow: 1;
   max-width: 100%;
